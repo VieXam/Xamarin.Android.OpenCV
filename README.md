@@ -1,16 +1,16 @@
-Xamarin.Android.OpenCV v3.1.0
+Xamarin.Android.OpenCV v4.5.3
 ========================
 
 ## C# bindings for the OpenCV Android SDK ##
 
-I am not associated with either [OpenCV](http://opencv.org/) or [Xamarin .inc](http://xamarin.com/). All rights belong to their respective owners.
+This project is inspired by [OpenCV](https://github.com/jeremy-ellis-tech/Xamarin.Android.OpenCV)
 
 This repository includes a C# translation of the demo applications included with OpenCV4Android.
 
 ## Installation ##
 1. Clone this repo
 2. Build the OpenCV.Binding project
-3. Reference "OpenCV.dll" from your project; found under `"Xamarin.Android.OpenCV\src\OpenCV.Binding\bin\[Debug|Release][-$ABI]\OpenCV.dll"`
+3. Reference "OpenCV.dll" from your project; found under `"Xamarin.Android.OpenCV\src\OpenCV.Binding\bin\[Debug|Release]\OpenCV.dll"`
 
 ## Reducing the `.dll` size ##
 OpenCV is huge; building the OpenCV binding project for the AnyCPU platform results in a .dll which is ~64MB! If this is too large for your Android application (and it should be) here are some methods to reduce the size:
@@ -59,7 +59,7 @@ The OpenCV4Android demo apps have been merged into a single application for simp
 ![Puzzle](docs/Screenshots/Puzzle.png)
 
 ## Contributing ##
-Contributions are very welcome, the OpenCV library is huge and any help is appreciated. If you notice an error, either with the Bindings (eg. a missing class) or the SDK demo [please raise an issue](https://github.com/TrekDev/Xamarin.Android.OpenCV/issues).
+Contributions are very welcome, the OpenCV library is huge and any help is appreciated. If you notice an error, either with the Bindings (eg. a missing class) or the SDK demo [please raise an issue](https://github.com/VieXam/Xamarin.Android.OpenCV/issues).
 
 Alternatively, you can fix it yourself and raise a pull request. Do this by forking the repo and creating a feature branch from `develop`.
 
