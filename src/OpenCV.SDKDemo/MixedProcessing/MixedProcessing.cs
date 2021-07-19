@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 namespace OpenCV.SDKDemo.MixedProcessing
 {
     [Activity(Label = "MixedProcessing")]
-    public class MixedProcessingActivity : Activity, CameraBridgeViewBase.ICvCameraViewListener2
+    public class MixedProcessingActivity : CameraActivity, CameraBridgeViewBase.ICvCameraViewListener2
     {
         public const string TAG = "OCVSample::Activity";
 
@@ -39,6 +39,8 @@ namespace OpenCV.SDKDemo.MixedProcessing
         private IMenuItem mItemPreviewFeatures;
 
         public CameraBridgeViewBase mOpenCvCameraView { get; private set; }
+
+        protected override IList<CameraBridgeViewBase> CameraViewList => new List<CameraBridgeViewBase>() { mOpenCvCameraView };
 
         private BaseLoaderCallback mLoaderCallback;
 
@@ -136,7 +138,7 @@ namespace OpenCV.SDKDemo.MixedProcessing
                     // input frame has RGBA format
                     mRgba = inputFrame.Rgba();
                     mGray = inputFrame.Gray();
-                    FindFeatures(JNIEnv.Handle, JNIEnv.FindClass(typeof(Java.Lang.Object)), mGray.NativeObjAddr, mRgba.NativeObjAddr);
+                    //FindFeatures(JNIEnv.Handle, JNIEnv.FindClass(typeof(Java.Lang.Object)), mGray.NativeObjAddr, mRgba.NativeObjAddr);
                     break;
             }
 
@@ -167,7 +169,7 @@ namespace OpenCV.SDKDemo.MixedProcessing
             return true;
         }
 
-        [DllImport("libmixed_sample", EntryPoint = "Java_org_opencv_samples_tutorial2_Tutorial2Activity_FindFeatures")]
+        [DllImport("libopencv_java4", EntryPoint = "Java_org_opencv_samples_tutorial2_Tutorial2Activity_FindFeatures")]
         public static extern void FindFeatures(IntPtr jenv, IntPtr jclass, long matAddrGr, long matAddrRgba);
     }
 
@@ -188,7 +190,7 @@ namespace OpenCV.SDKDemo.MixedProcessing
                         Log.Info(MixedProcessingActivity.TAG, "OpenCV loaded successfully");
 
                         // Load native library after(!) OpenCV initialization
-                        JavaSystem.LoadLibrary("mixed_sample");
+                        //JavaSystem.LoadLibrary("mixed_sample");
 
                         _activity.mOpenCvCameraView.EnableView();
                     }

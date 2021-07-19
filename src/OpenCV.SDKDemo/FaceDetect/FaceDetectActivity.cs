@@ -23,7 +23,7 @@ using Java.Lang;
 namespace OpenCV.SDKDemo.FaceDetect
 {
     [Activity(Label = ActivityTags.FaceDetect)]
-    public class FaceDetectActivity : Activity, CameraBridgeViewBase.ICvCameraViewListener2
+    public class FaceDetectActivity : CameraActivity, CameraBridgeViewBase.ICvCameraViewListener2
     {
         private static readonly Scalar FACE_RECT_COLOR = new Scalar(0, 255, 0, 255);
         public static readonly int JAVA_DETECTOR = 0;
@@ -48,6 +48,8 @@ namespace OpenCV.SDKDemo.FaceDetect
         private int mAbsoluteFaceSize = 0;
 
         private CameraBridgeViewBase mOpenCvCameraView;
+
+        protected override IList<CameraBridgeViewBase> CameraViewList => new List<CameraBridgeViewBase>() { mOpenCvCameraView };
 
         private Callback mLoaderCallback;
 

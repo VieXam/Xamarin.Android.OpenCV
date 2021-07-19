@@ -8,6 +8,7 @@ using OpenCV.SDKDemo.Utilities;
 using OpenCV.Core;
 using OpenCV.Android;
 using OpenCV;
+using System.Collections.Generic;
 
 namespace OpenCV.SDKDemo.CameraPreview
 {
@@ -16,9 +17,11 @@ namespace OpenCV.SDKDemo.CameraPreview
         ConfigurationChanges=ConfigChanges.KeyboardHidden|ConfigChanges.Orientation
         //,Theme="@android:style/Theme.NoTitleBar.FullScreen"
         )]
-    public class CameraPreviewActivity : Activity, ILoaderCallbackInterface, CameraBridgeViewBase.ICvCameraViewListener
+    public class CameraPreviewActivity : CameraActivity, ILoaderCallbackInterface, CameraBridgeViewBase.ICvCameraViewListener
     {
         private CameraBridgeViewBase _openCvCameraView;
+
+        protected override IList<CameraBridgeViewBase> CameraViewList => new List<CameraBridgeViewBase>() { _openCvCameraView };
 
         protected override void OnCreate(Bundle savedInstanceState)
         {

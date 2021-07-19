@@ -22,7 +22,7 @@ namespace OpenCV.SDKDemo.ColorBlobDetection
     [Activity(Label = "ColorBlobDetectionActivity",
         ScreenOrientation = ScreenOrientation.Landscape,
         ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.KeyboardHidden)]
-    public class ColorBlobDetectionActivity : Activity, View.IOnTouchListener, CameraBridgeViewBase.ICvCameraViewListener2
+    public class ColorBlobDetectionActivity : CameraActivity, View.IOnTouchListener, CameraBridgeViewBase.ICvCameraViewListener2
     {
         private bool mIsColorSelected = false;
         private Mat mRgba;
@@ -34,6 +34,8 @@ namespace OpenCV.SDKDemo.ColorBlobDetection
         private Scalar CONTOUR_COLOR;
 
         public CameraBridgeViewBase mOpenCvCameraView { get; private set; }
+
+        protected override IList<CameraBridgeViewBase> CameraViewList => new List<CameraBridgeViewBase>() { mOpenCvCameraView };
 
         BaseLoaderCallback mLoaderCallback;
 

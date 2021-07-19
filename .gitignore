@@ -1,1 +1,5 @@
 /src/.vs
+/src/OpenCV.Binding/obj
+/src/OpenCV.Binding/bin
+/src/OpenCV.SDKDemo/obj
+/src/OpenCV.SDKDemo/bin

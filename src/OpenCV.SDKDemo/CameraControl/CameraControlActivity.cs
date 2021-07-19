@@ -21,11 +21,14 @@ using JavaObject = Java.Lang.Object;
 namespace OpenCV.SDKDemo.CameraControl
 {
     [Activity(Label = "CameraControlActivity")]
-    public class CameraControlActivity : Activity, View.IOnTouchListener, CameraBridgeViewBase.ICvCameraViewListener2
+    public class CameraControlActivity : CameraActivity, View.IOnTouchListener, CameraBridgeViewBase.ICvCameraViewListener2
     {
         public const string TAG = "OCVSample::Activity";
 
         private CameraControlView mOpenCvCameraView;
+
+        protected override IList<CameraBridgeViewBase> CameraViewList => new List<CameraBridgeViewBase>() { mOpenCvCameraView };
+
         private List<Size> mResolutionList;
         private IMenuItem[] mEffectMenuItems;
         private ISubMenu mColorEffectsMenu;

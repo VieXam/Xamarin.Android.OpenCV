@@ -7,17 +7,20 @@ using OpenCV.Android;
 using OpenCV.Core;
 using OpenCV.SDKDemo.Puzzle;
 using OpenCV.SDKDemo.Utilities;
+using System.Collections.Generic;
 
 namespace OpenCV.SDKDemo.Puzzle
 {
     [Activity(Label = ActivityTags.Puzzle)]
-    public class PuzzleActivity : Activity, CameraBridgeViewBase.ICvCameraViewListener, ILoaderCallbackInterface, View.IOnTouchListener
+    public class PuzzleActivity : CameraActivity, CameraBridgeViewBase.ICvCameraViewListener, ILoaderCallbackInterface, View.IOnTouchListener
     {
         private int _gameWidth;
         private int _gameHeight;
         private IMenuItem _itemHideNumbers;
         private IMenuItem _itemStartNewGame;
         private CameraBridgeViewBase _openCvCameraView;
+        protected override IList<CameraBridgeViewBase> CameraViewList => new List<CameraBridgeViewBase>() { _openCvCameraView };
+
         private Puzzle15Processor _puzzle15;
 
         protected override void OnCreate(Bundle savedInstanceState)
