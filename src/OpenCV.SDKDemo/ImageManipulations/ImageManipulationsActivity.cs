@@ -19,7 +19,7 @@ using Java.Util;
 namespace OpenCV.SDKDemo.ImageManipulations
 {
     [Activity(Label = "ImageManipulationsActivity")]
-    public class ImageManipulationsActivity : Activity, CameraBridgeViewBase.ICvCameraViewListener2
+    public class ImageManipulationsActivity : CameraActivity, CameraBridgeViewBase.ICvCameraViewListener2
     {
         public const string TAG = "OCVSample::Activity";
 
@@ -100,6 +100,8 @@ namespace OpenCV.SDKDemo.ImageManipulations
                 mLoaderCallback.OnManagerConnected(LoaderCallbackInterface.Success);
             }
         }
+
+        protected override IList<CameraBridgeViewBase> CameraViewList => new List<CameraBridgeViewBase>() { mOpenCvCameraView };
 
         protected override void OnDestroy()
         {

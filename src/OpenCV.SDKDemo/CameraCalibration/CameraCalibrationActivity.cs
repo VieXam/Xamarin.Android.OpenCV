@@ -18,11 +18,14 @@ using System.Threading.Tasks;
 namespace OpenCV.SDKDemo.CameraCalibration
 {
     [Activity(Label = ActivityTags.CameraCalibration)]
-    public class CameraCalibrationActivity : Activity, CameraBridgeViewBase.ICvCameraViewListener2, View.IOnTouchListener
+    public class CameraCalibrationActivity : CameraActivity, CameraBridgeViewBase.ICvCameraViewListener2, View.IOnTouchListener
     {
         public const string TAG = "OCVSample::Activity";
 
         public CameraBridgeViewBase mOpenCvCameraView { get; private set; }
+
+        protected override IList<CameraBridgeViewBase> CameraViewList => new List<CameraBridgeViewBase>() { mOpenCvCameraView };
+
         private CameraCalibrator mCalibrator;
         private OnCameraFrameRender mOnCameraFrameRender;
         private int mWidth;
